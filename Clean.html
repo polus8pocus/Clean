@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cleanskin Lab - Landing Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        .font-serif { font-family: 'Playfair Display', serif; }
+        .font-sans { font-family: 'Inter', sans-serif; }
+        .mint-bg { background-color: #98d2c5; }
+        .mint-hover:hover { background-color: #82c2b3; }
+        .fade-in { animation: fadeIn 0.4s ease-in-out; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="font-sans text-[#222222] flex flex-col min-h-screen bg-white">
+
+    <!-- CONTENU DE LA LANDING PAGE -->
+    <div id="landing-content" class="flex flex-col min-h-screen">
+        <!-- Barre d'annonce -->
+        <div class="w-full bg-white border-b border-gray-100 py-1.5 text-center text-xs tracking-wide">
+            Faites notre diagnostic peau et recevez un produit expert en cadeau
+        </div>
+
+        <!-- Header -->
+        <header class="w-full px-6 py-6 flex items-center justify-between bg-white sticky top-0 z-50">
+            <!-- Logo -->
+            <div class="flex-shrink-0 flex flex-col items-center cursor-pointer">
+                <h1 class="font-serif text-3xl tracking-tight leading-none text-[#222222]">CleanSkin</h1>
+                <span class="text-[9px] uppercase tracking-[0.2em] text-gray-500 mt-0.5 ml-8">paris</span>
+            </div>
+
+            <!-- Navigation Centrale (Desktop) -->
+            <nav class="hidden md:flex space-x-8 text-[13px] tracking-wide font-medium">
+                <button onclick="openQuiz()" class="hover:text-gray-500 transition-colors">Créer ton kit</button>
+                <a href="#" class="hover:text-gray-500 transition-colors">Nos produits</a>
+                <a href="#" class="hover:text-gray-500 transition-colors">À propos</a>
+                <a href="#" class="hover:text-gray-500 transition-colors">Contact</a>
+            </nav>
+
+            <!-- Liens Droite -->
+            <div class="flex items-center space-x-6 text-[13px] font-medium">
+                <a href="#" class="hidden md:block hover:text-gray-500 transition-colors">Connexion</a>
+                <button class="hover:text-gray-500 transition-colors">Rechercher</button>
+                <a href="#" class="hover:text-gray-500 transition-colors">Panier (0)</a>
+            </div>
+        </header>
+
+        <!-- Contenu Principal -->
+        <main class="flex-grow">
+            <!-- Hero section du quiz avec image de fond générée -->
+            <section class="relative py-24 md:py-32 px-6 md:px-12 lg:px-20 overflow-hidden bg-cover bg-center" style="background-image: url('https://image.pollinations.ai/prompt/Photorealistic%20white%20cosmetic%20box%20with%20mint%20green%20and%20orange%20details%20on%20a%20wooden%20table%20with%20a%20green%20plant%20in%20the%20background%20bright%20natural%20lighting%20skincare%20aesthetic?width=1920&height=1080&nologo=true');">
+                
+                <!-- Overlay pour garantir la lisibilité du texte -->
+                <div class="absolute inset-0 bg-white/70 sm:bg-gradient-to-r sm:from-white/95 sm:to-white/20"></div>
+
+                <div class="relative max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-12">
+                    
+                    <!-- Texte à gauche -->
+                    <div class="max-w-xl text-center md:text-left">
+                        <div class="inline-flex items-center justify-center space-x-3 mb-6">
+                            <span class="bg-[#DC965A] text-white text-[10px] font-bold tracking-[0.2em] uppercase py-1.5 px-3 shadow-sm">Offre spéciale</span>
+                            <span class="text-[11px] font-semibold tracking-widest uppercase text-[#222222]">1 produit au choix offert</span>
+                        </div>
+                        <h2 class="font-serif text-4xl md:text-5xl lg:text-6xl text-[#222222] leading-tight mb-6">
+                            Dites-nous tout sur votre peau, on créé votre box
+                        </h2>
+                        <p class="text-gray-800 mb-10 text-[15px] font-sans leading-relaxed font-medium">
+                            Faites le quiz pour découvrir les 5 essentiels de votre routine sur-mesure, <br class="hidden lg:block"/>
+                            <strong class="text-[#222222] border-b-2 border-[#98d2c5] pb-0.5">et ajoutez le 6ème produit de votre choix en cadeau.</strong>
+                        </p>
+                        <button onclick="openQuiz()" class="mint-bg mint-hover text-[#222222] font-semibold text-sm tracking-widest uppercase py-4 px-8 transition-colors duration-200 shadow-md">
+                            Commencer le quiz
+                        </button>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Section Images Produits (Masonry) -->
+            <section class="py-16 px-6 md:px-12 bg-white max-w-6xl mx-auto">
+                <div class="text-center mb-12">
+                    <h3 class="font-serif text-3xl md:text-4xl text-[#222222] mb-3">Ce qui vous attend dans votre box</h3>
+                    <p class="text-gray-500 text-sm font-sans max-w-2xl mx-auto leading-relaxed">Découvrez les étapes clés de votre future routine. Chaque formule sera soigneusement sélectionnée sur-mesure pour s'adapter parfaitement aux besoins uniques de votre peau.</p>
+                </div>
+                
+                <div class="columns-1 md:columns-3 gap-6">
+                    
+                    <!-- Le Nettoyant -->
+                    <div class="break-inside-avoid mb-6 rounded-2xl overflow-hidden bg-[#f8f9fa] flex flex-col justify-center items-center p-6 border border-gray-50">
+                        <img src="https://image.pollinations.ai/prompt/Minimalist%20white%20cosmetic%20pump%20bottle%20mint%20green%20orange%20details?width=400&height=500&nologo=true&seed=1" alt="Un Nettoyant" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-500 rounded-lg">
+                        <h4 class="mt-5 font-serif text-xl text-[#222222]">Un Nettoyant</h4>
+                    </div>
+
+                    <!-- L'Hydratant -->
+                    <div class="break-inside-avoid mb-6 rounded-2xl overflow-hidden bg-[#f8f9fa] flex flex-col justify-center items-center p-6 border border-gray-50">
+                        <img src="https://image.pollinations.ai/prompt/Minimalist%20white%20cosmetic%20cream%20jar%20mint%20green%20orange%20details?width=400&height=400&nologo=true&seed=2" alt="Un Hydratant" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-500 rounded-lg">
+                        <h4 class="mt-5 font-serif text-xl text-[#222222]">Un Hydratant</h4>
+                    </div>
+
+                    <!-- L'Exfoliant -->
+                    <div class="break-inside-avoid mb-6 rounded-2xl overflow-hidden bg-[#f8f9fa] flex flex-col justify-center items-center p-6 border border-gray-50">
+                        <img src="https://image.pollinations.ai/prompt/Minimalist%20white%20cosmetic%20tube%20mint%20green%20orange%20details?width=400&height=600&nologo=true&seed=3" alt="Un Exfoliant" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-500 rounded-lg">
+                        <h4 class="mt-5 font-serif text-xl text-[#222222]">Un Exfoliant</h4>
+                    </div>
+
+                    <!-- Le Sérum -->
+                    <div class="break-inside-avoid mb-6 rounded-2xl overflow-hidden bg-[#f8f9fa] flex flex-col justify-center items-center p-6 border border-gray-50">
+                        <img src="https://image.pollinations.ai/prompt/Minimalist%20white%20glass%20dropper%20bottle%20mint%20green%20orange%20details?width=400&height=500&nologo=true&seed=4" alt="Un Sérum" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-500 rounded-lg">
+                        <h4 class="mt-5 font-serif text-xl text-[#222222]">Un Sérum</h4>
+                    </div>
+
+                    <!-- Le Protecteur Solaire -->
+                    <div class="break-inside-avoid mb-6 rounded-2xl overflow-hidden bg-[#f8f9fa] flex flex-col justify-center items-center p-6 border border-gray-50">
+                        <img src="https://image.pollinations.ai/prompt/Minimalist%20white%20sunscreen%20tube%20spf%20mint%20green%20orange%20details?width=400&height=400&nologo=true&seed=7" alt="Un Protecteur Solaire" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-500 rounded-lg">
+                        <h4 class="mt-5 font-serif text-xl text-[#222222]">Un Protecteur Solaire</h4>
+                    </div>
+
+                    <!-- Le Produit au Choix -->
+                    <div class="break-inside-avoid mb-6 rounded-2xl overflow-hidden bg-[#98d2c5]/10 flex flex-col justify-center items-center p-6 border border-[#98d2c5]/30 relative">
+                        <span class="absolute top-4 right-4 bg-[#DC965A] text-white text-[9px] font-bold tracking-[0.2em] uppercase py-1.5 px-3 rounded-full shadow-sm z-10">Cadeau</span>
+                        <img src="https://image.pollinations.ai/prompt/Elegant%20white%20gift%20box%20mint%20green%20ribbon%20orange%20details?width=400&height=500&nologo=true&seed=6" alt="Votre Produit offert" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-500 rounded-lg mix-blend-multiply">
+                        <h4 class="mt-5 font-serif text-xl text-[#222222]">Votre produit au choix</h4>
+                    </div>
+                    
+                </div>
+            </section>
+
+            <!-- Section Avis & Réassurance -->
+            <section class="py-20 px-6 md:px-12 bg-[#f8f9fa]">
+                <div class="max-w-6xl mx-auto">
+                    <!-- Note globale -->
+                    <div class="flex flex-col items-center mb-14 text-center">
+                        <div class="flex space-x-1 text-[#DC965A] mb-4">
+                            <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                            <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                            <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                            <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                            <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        </div>
+                        <h3 class="font-serif text-3xl md:text-4xl text-[#222222] mb-3">Approuvé par nos clientes</h3>
+                        <p class="text-gray-500 font-sans text-sm">4.8/5 basé sur plus de 1 200 avis vérifiés.</p>
+                    </div>
+
+                    <!-- Grille d'avis -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <!-- Avis 1 -->
+                        <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+                            <div class="flex space-x-1 text-[#DC965A] mb-4">
+                                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                            </div>
+                            <p class="text-[#222222] mb-6 font-medium leading-relaxed text-sm">"Le quiz m'a mieux compris que mon ex. La box sur-mesure a complètement changé mon expérience."</p>
+                            <div>
+                                <span class="font-semibold block text-[#222222] text-sm">Anaïs M.</span>
+                                <span class="text-gray-500 text-xs flex items-center mt-1">
+                                    <svg class="w-3 h-3 text-[#98d2c5] mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                    Acheteuse vérifiée
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Avis 2 -->
+                        <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+                            <div class="flex space-x-1 text-[#DC965A] mb-4">
+                                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                            </div>
+                            <p class="text-[#222222] mb-6 font-medium leading-relaxed text-sm">"Ce quiz a mieux cerné ma peau que mon propre dermatologue. La box est canon et mon banquier me remercie pour le cadeau."</p>
+                            <div>
+                                <span class="font-semibold block text-[#222222] text-sm">Léa L.</span>
+                                <span class="text-gray-500 text-xs flex items-center mt-1">
+                                    <svg class="w-3 h-3 text-[#98d2c5] mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                    Acheteuse vérifiée
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Avis 3 -->
+                        <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+                            <div class="flex space-x-1 text-[#DC965A] mb-4">
+                                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                            </div>
+                            <p class="text-[#222222] mb-6 font-medium leading-relaxed text-sm">"J'ai pris la box parce que le 6ème produit était offert, je suis faible. Mais franchement zéro regret, ma peau revit !"</p>
+                            <div>
+                                <span class="font-semibold block text-[#222222] text-sm">Maxine T.</span>
+                                <span class="text-gray-500 text-xs flex items-center mt-1">
+                                    <svg class="w-3 h-3 text-[#98d2c5] mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                    Acheteuse vérifiée
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Nouveau CTA Quiz -->
+            <section class="py-20 px-6 text-center bg-[#98d2c5]">
+                <h2 class="font-serif text-3xl md:text-4xl text-[#222222] mb-8">Prête à découvrir ce dont votre peau a vraiment besoin ?</h2>
+                <button onclick="openQuiz()" class="bg-white hover:bg-gray-50 text-[#222222] font-semibold text-sm tracking-widest uppercase py-4 px-10 transition-colors duration-200 shadow-sm">
+                    Je fais le quiz
+                </button>
+            </section>
+
+            <!-- Section FAQ & Contact -->
+            <section class="py-20 px-6 md:px-12 bg-white max-w-3xl mx-auto">
+                <div class="text-center mb-12">
+                    <h3 class="font-serif text-3xl md:text-4xl text-[#222222] mb-3">Questions fréquentes</h3>
+                    <p class="text-gray-500 text-sm font-sans">Tout ce que vous devez savoir sur votre routine sur-mesure.</p>
+                </div>
+
+                <!-- FAQ (Accords interactifs) -->
+                <div class="space-y-4 mb-16">
+                    <details class="group border-b border-gray-100 pb-4">
+                        <summary class="flex justify-between items-center font-medium cursor-pointer list-none text-[#222222]">
+                            <span>Comment les produits de ma box sont-ils choisis ?</span>
+                            <span class="transition group-open:rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <p class="text-gray-500 mt-4 text-sm leading-relaxed">Vos réponses au quiz nous permettent d'analyser les besoins spécifiques de votre peau. Notre algorithme sélectionne ensuite les 5 produits parfaits pour constituer votre routine idéale.</p>
+                    </details>
+
+                    <details class="group border-b border-gray-100 pb-4">
+                        <summary class="flex justify-between items-center font-medium cursor-pointer list-none text-[#222222]">
+                            <span>Les produits conviennent-ils aux peaux sensibles ?</span>
+                            <span class="transition group-open:rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <p class="text-gray-500 mt-4 text-sm leading-relaxed">Absolument. Toute la gamme CleanSkin a été développée en collaboration avec des experts pour apaiser et réparer la peau, même les plus sensibilisées.</p>
+                    </details>
+
+                    <details class="group border-b border-gray-100 pb-4">
+                        <summary class="flex justify-between items-center font-medium cursor-pointer list-none text-[#222222]">
+                            <span>Quel est le 6ème produit offert ?</span>
+                            <span class="transition group-open:rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <p class="text-gray-500 mt-4 text-sm leading-relaxed">À la fin du quiz, une fois votre routine de 5 produits révélée, vous aurez la possibilité de choisir votre 6ème produit parmi une sélection, totalement gratuitement.</p>
+                    </details>
+                </div>
+
+                <!-- Encart Conseiller -->
+                <div class="text-center bg-[#f8f9fa] p-10 rounded-2xl border border-gray-100">
+                    <h4 class="font-serif text-2xl text-[#222222] mb-2">Vous avez un doute ?</h4>
+                    <p class="text-gray-500 text-sm mb-6">Nos experts de la peau sont disponibles pour vous accompagner de manière personnalisée.</p>
+                    <a href="#" class="inline-block border border-[#222222] text-[#222222] hover:bg-[#222222] hover:text-white font-semibold text-xs tracking-widest uppercase py-3.5 px-6 transition-colors duration-300">
+                        Contacter un conseiller
+                    </a>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-white border-t border-gray-100 pt-16 pb-8 px-6 md:px-12">
+            <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-24">
+                
+                <!-- Colonne 1 : Description -->
+                <div>
+                    <p class="text-[13px] leading-relaxed text-gray-700">
+                        CleanSkin propose une approche simplifiée et transparente de la cosmétique. Nos produits sont conçus pour répondre aux besoins essentiels de votre peau, sans complexité inutile.
+                    </p>
+                </div>
+
+                <!-- Colonne 2 : Liens utiles -->
+                <div class="flex flex-col space-y-3 text-[13px]">
+                    <a href="#" class="hover:text-gray-500 transition-colors">Rechercher</a>
+                    <a href="#" class="hover:text-gray-500 transition-colors">Conditions générales de vente</a>
+                    <a href="#" class="hover:text-gray-500 transition-colors">Contact</a>
+                    <a href="#" class="hover:text-gray-500 transition-colors">FAQ</a>
+                </div>
+
+                <!-- Colonne 3 : Newsletter -->
+                <div>
+                    <h3 class="font-serif text-2xl mb-4 text-[#222222]">Inscrivez-vous à notre newsletter</h3>
+                    <form class="flex flex-col space-y-3">
+                        <input type="email" placeholder="email@exemple.com" class="border border-gray-400 p-3 text-sm focus:outline-none focus:border-gray-800 transition-colors w-full" required>
+                        <button type="submit" class="mint-bg mint-hover text-[#222222] font-semibold text-xs tracking-widest uppercase py-3.5 px-4 w-full transition-colors duration-200">
+                            S'abonner
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Bas du footer -->
+            <div class="max-w-7xl mx-auto mt-16 pt-6 flex flex-col md:flex-row justify-between items-center text-[11px] text-gray-500 border-t border-gray-100">
+                <p>© 2026, CleanSkin Lab. Commerce électronique propulsé par Shopify</p>
+                <div class="flex space-x-4 mt-4 md:mt-0">
+                    <button class="hover:text-gray-800 flex items-center">France (EUR €) <svg class="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
+                    <button class="hover:text-gray-800 flex items-center">français <svg class="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- PAGE QUIZ (Cachée par défaut) -->
+    <div id="quiz-content" class="hidden min-h-screen bg-[#f8f9fa] flex-col items-center justify-center p-6 md:p-12">
+        
+        <div id="quiz-step-active" class="w-full max-w-2xl bg-white p-8 md:p-12 rounded-2xl shadow-sm border border-gray-100 text-center fade-in">
+            <!-- Progress Bar -->
+            <div class="w-full bg-gray-100 h-1.5 mb-10 rounded-full overflow-hidden">
+                <div id="quiz-progress-bar" class="bg-[#98d2c5] w-[10%] h-full transition-all duration-300"></div>
+            </div>
+
+            <span id="quiz-counter" class="text-[#DC965A] font-bold text-xs tracking-widest uppercase mb-4 block">Question 1 / 4</span>
+            <h2 id="quiz-question-title" class="font-serif text-3xl md:text-4xl text-[#222222] mb-8">Chargement...</h2>
+            
+            <div id="quiz-options-container" class="space-y-4 flex flex-col text-left">
+                <!-- Les options seront générées ici par le JS -->
+            </div>
+
+            <button onclick="closeQuiz()" class="mt-12 text-xs text-gray-400 hover:text-[#222222] underline uppercase tracking-widest transition-colors">Retour à l'accueil</button>
+        </div>
+
+        <div id="quiz-step-processing" class="hidden w-full max-w-2xl bg-white p-12 md:p-16 rounded-2xl shadow-sm border border-gray-100 text-center fade-in">
+            <div id="spinner-loader" class="w-16 h-16 border-4 border-[#98d2c5] border-t-transparent rounded-full animate-spin mx-auto mb-8"></div>
+            <h2 class="font-serif text-3xl md:text-4xl text-[#222222] mb-4">Analyse de vos réponses...</h2>
+            <p id="processing-text" class="text-gray-500 font-sans mb-10">Notre algorithme identifie les actifs parfaits pour vous.</p>
+            
+            <button id="btn-discover-type" onclick="showGate()" class="hidden mint-bg mint-hover text-[#222222] font-semibold text-sm tracking-widest uppercase py-4 px-10 transition-colors duration-200 shadow-sm mx-auto fade-in">
+                Je découvre mon type de peau
+            </button>
+        </div>
+
+        <div id="quiz-step-gate" class="hidden w-full max-w-4xl bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden fade-in flex-col md:flex-row">
+            
+            <!-- Image de la box -->
+            <div class="w-full md:w-1/2 bg-[#f8f9fa] p-8 flex items-center justify-center relative">
+                <span class="absolute top-6 left-6 bg-[#DC965A] text-white text-[10px] font-bold tracking-[0.2em] uppercase py-1.5 px-3 rounded-full shadow-sm z-10">Diagnostic Terminé</span>
+                <img src="https://image.pollinations.ai/prompt/Photorealistic%20elegant%20white%20skincare%20box%20set%20mint%20green%20orange%20details%20premium%20packaging?width=600&height=600&nologo=true&seed=15" alt="Votre Box Personnalisée" class="w-full max-w-md h-auto object-cover mix-blend-multiply hover:scale-105 transition-transform duration-500">
+            </div>
+            
+            <!-- Formulaire d'inscription -->
+            <div id="gate-form-content" class="w-full md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
+                <h2 class="font-serif text-3xl text-[#222222] mb-4">Votre type de peau a été identifié !</h2>
+                <p class="text-gray-500 font-sans text-sm mb-8 leading-relaxed">
+                    Nous avons sélectionné les 5 produits idéaux pour formuler votre routine sur-mesure. Créez votre compte gratuitement pour débloquer votre analyse complète et découvrir votre box avec votre cadeau.
+                </p>
+                
+                <form class="space-y-4" onsubmit="handleRegistration(event)">
+                    <div class="grid grid-cols-2 gap-4">
+                        <input type="text" placeholder="Prénom" class="w-full border border-gray-200 p-3.5 text-sm rounded-lg focus:outline-none focus:border-[#98d2c5] transition-colors" required>
+                        <input type="text" placeholder="Nom" class="w-full border border-gray-200 p-3.5 text-sm rounded-lg focus:outline-none focus:border-[#98d2c5] transition-colors" required>
+                    </div>
+                    <div>
+                        <input type="email" placeholder="Adresse e-mail" class="w-full border border-gray-200 p-3.5 text-sm rounded-lg focus:outline-none focus:border-[#98d2c5] transition-colors" required>
+                    </div>
+                    <div>
+                        <input type="password" placeholder="Mot de passe" class="w-full border border-gray-200 p-3.5 text-sm rounded-lg focus:outline-none focus:border-[#98d2c5] transition-colors" required>
+                    </div>
+                    <button type="submit" class="w-full mint-bg mint-hover text-[#222222] font-semibold text-xs tracking-widest uppercase py-4 mt-2 rounded-lg transition-colors duration-200 shadow-sm">
+                        Découvrir mon diagnostic
+                    </button>
+                </form>
+                <div class="flex items-center justify-between mt-6">
+                    <p class="text-xs text-gray-400">Déjà membre ? <a href="#" class="text-[#222222] underline hover:text-[#DC965A]">Connectez-vous</a></p>
+                    <button onclick="closeQuiz()" class="text-xs text-gray-400 hover:text-[#222222] underline transition-colors">Annuler</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="quiz-step-reveal" class="hidden w-full max-w-4xl bg-white p-8 md:p-12 rounded-2xl shadow-sm border border-gray-100 fade-in flex-col">
+            <div class="text-center mb-10">
+                <span class="text-[#DC965A] font-bold text-xs tracking-widest uppercase mb-4 block">Votre profil beauté</span>
+                <h2 class="font-serif text-3xl md:text-5xl text-[#222222] mb-4">Peau Mixte à Tendance Déshydratée</h2>
+                <p class="text-gray-500 font-sans text-sm max-w-2xl mx-auto leading-relaxed">
+                    Votre peau a besoin d'être équilibrée : purifier la zone T pour limiter les brillances, tout en gorgeant l'épiderme d'eau pour apaiser les tiraillements sur les joues. Voici votre routine sur-mesure de 5 essentiels.
+                </p>
+            </div>
+
+            <div class="bg-[#f8f9fa] rounded-xl p-6 md:p-8 mb-10 border border-gray-100">
+                <div class="flex flex-col md:flex-row justify-between items-center border-b border-gray-200 pb-6 mb-6">
+                    <h3 class="font-serif text-2xl text-[#222222]">Votre Box Sur-Mesure</h3>
+                    <span class="text-2xl font-sans text-[#222222] font-semibold mt-4 md:mt-0">89,99 €</span>
+                </div>
+                
+                <!-- Détail des 5 produits sur-mesure -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    
+                    <!-- Produit 1 -->
+                    <div class="flex items-start bg-white p-5 rounded-xl border border-gray-100 shadow-sm">
+                        <img src="https://image.pollinations.ai/prompt/Minimalist%20white%20cosmetic%20pump%20bottle%20mint%20green%20orange%20details?width=150&height=150&nologo=true&seed=1" class="w-16 h-16 object-cover rounded-md mr-4 mix-blend-multiply flex-shrink-0">
+                        <div class="text-left">
+                            <h4 class="font-serif text-lg text-[#222222] leading-tight">Le Nettoyant</h4>
+                            <p class="text-[10px] text-[#DC965A] font-bold mb-1.5 uppercase tracking-wider">Purifiant doux</p>
+                            <p class="text-xs text-gray-500 leading-relaxed">Élimine les impuretés et régule l'excès de sébum sur la zone T, sans jamais agresser les zones sensibles de vos joues.</p>
+                        </div>
+                    </div>
+
+                    <!-- Produit 2 -->
+                    <div class="flex items-start bg-white p-5 rounded-xl border border-gray-100 shadow-sm">
+                        <img src="https://image.pollinations.ai/prompt/Minimalist%20white%20cosmetic%20cream%20jar%20mint%20green%20orange%20details?width=150&height=150&nologo=true&seed=2" class="w-16 h-16 object-cover rounded-md mr-4 mix-blend-multiply flex-shrink-0">
+                        <div class="text-left">
+                            <h4 class="font-serif text-lg text-[#222222] leading-tight">L'Hydratant</h4>
+                            <p class="text-[10px] text-[#DC965A] font-bold mb-1.5 uppercase tracking-wider">Texture gel-crème</p>
+                            <p class="text-xs text-gray-500 leading-relaxed">Une formule légère gorgée d'actifs désaltérants qui hydrate en profondeur tout au long de la journée, sans fini gras ou collant.</p>
+                        </div>
+                    </div>
+
+                    <!-- Produit 3 -->
+                    <div class="flex items-start bg-white p-5 rounded-xl border border-gray-100 shadow-sm">
+                        <img src="https://image.pollinations.ai/prompt/Minimalist%20white%20cosmetic%20tube%20mint%20green%20orange%20details?width=150&height=150&nologo=true&seed=3" class="w-16 h-16 object-cover rounded-md mr-4 mix-blend-multiply flex-shrink-0">
+                        <div class="text-left">
+                            <h4 class="font-serif text-lg text-[#222222] leading-tight">L'Exfoliant</h4>
+                            <p class="text-[10px] text-[#DC965A] font-bold mb-1.5 uppercase tracking-wider">Action ciblée</p>
+                            <p class="text-xs text-gray-500 leading-relaxed">Micro-exfoliation sur-mesure qui désincruste les pores et lisse le grain de peau pour un teint éclatant et parfaitement unifié.</p>
+                        </div>
+                    </div>
+
+                    <!-- Produit 4 -->
+                    <div class="flex items-start bg-white p-5 rounded-xl border border-gray-100 shadow-sm">
+                        <img src="https://image.pollinations.ai/prompt/Minimalist%20white%20glass%20dropper%20bottle%20mint%20green%20orange%20details?width=150&height=150&nologo=true&seed=4" class="w-16 h-16 object-cover rounded-md mr-4 mix-blend-multiply flex-shrink-0">
+                        <div class="text-left">
+                            <h4 class="font-serif text-lg text-[#222222] leading-tight">Le Sérum</h4>
+                            <p class="text-[10px] text-[#DC965A] font-bold mb-1.5 uppercase tracking-wider">Hydratation intense</p>
+                            <p class="text-xs text-gray-500 leading-relaxed">Un véritable shot de nutriments qui pénètre instantanément pour réparer la barrière cutanée et apaiser les tiraillements post-laser.</p>
+                        </div>
+                    </div>
+
+                    <!-- Produit 5 -->
+                    <div class="flex items-start bg-white p-5 rounded-xl border border-gray-100 shadow-sm md:col-span-2 md:w-1/2 md:mx-auto">
+                        <img src="https://image.pollinations.ai/prompt/Minimalist%20white%20sunscreen%20tube%20spf%20mint%20green%20orange%20details?width=150&height=150&nologo=true&seed=7" class="w-16 h-16 object-cover rounded-md mr-4 mix-blend-multiply flex-shrink-0">
+                        <div class="text-left">
+                            <h4 class="font-serif text-lg text-[#222222] leading-tight">Le Protecteur Solaire</h4>
+                            <p class="text-[10px] text-[#DC965A] font-bold mb-1.5 uppercase tracking-wider">Fini mat invisible</p>
+                            <p class="text-xs text-gray-500 leading-relaxed">Haute protection non-comédogène qui prévient le vieillissement cutané et matifie votre peau, pour une protection optimale au quotidien.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Partage et CTA -->
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                <div class="flex flex-col items-center md:items-start">
+                    <span class="text-xs text-gray-500 uppercase tracking-widest mb-3">Partager mon diagnostic</span>
+                    <div class="flex space-x-3">
+                        <button class="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center hover:bg-[#f8f9fa] hover:text-[#DC965A] transition-colors">
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm3.98-10.181a1.44 1.44 0 11-2.88 0 1.44 1.44 0 012.88 0z"/></svg>
+                        </button>
+                        <button class="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center hover:bg-[#f8f9fa] hover:text-[#222222] transition-colors">
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 448 512"><path d="M448,209.91a210.06,210.06,0,0,1-122.77-39.25V349.38A162.55,162.55,0,1,1,185,188.31V278.2a74.62,74.62,0,1,0,52.23,71.18V0l88,0a121.18,121.18,0,0,0,1.86,22.17h0A122.18,122.18,0,0,0,381,102.39a121.43,121.43,0,0,0,67,20.14Z"/></svg>
+                        </button>
+                    </div>
+                </div>
+
+                <button onclick="showGiftSelection()" class="w-full md:w-auto mint-bg mint-hover text-[#222222] font-semibold text-sm tracking-widest uppercase py-4 px-10 rounded-lg transition-colors duration-200 shadow-sm">
+                    Je choisis mon produit offert
+                </button>
+            </div>
+        </div>
+
+        <div id="quiz-step-gift" class="hidden w-full max-w-5xl bg-white p-8 md:p-12 rounded-2xl shadow-sm border border-gray-100 fade-in flex-col">
+            <div class="text-center mb-10">
+                <span class="text-[#DC965A] font-bold text-xs tracking-widest uppercase mb-4 block">Étape finale (6/6)</span>
+                <h2 class="font-serif text-3xl md:text-4xl text-[#222222] mb-4">Choisissez votre produit expert offert</h2>
+                <p class="text-gray-500 font-sans text-sm max-w-xl mx-auto leading-relaxed">
+                    Sélectionnez le produit de votre choix pour compléter votre routine. Il sera ajouté gratuitement à votre commande.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+                <!-- Option 1 -->
+                <label class="cursor-pointer group">
+                    <input type="radio" name="gift" class="peer sr-only" value="mask" onchange="enableOrderBtn()">
+                    <div class="border-2 border-gray-100 rounded-xl p-6 flex flex-col items-center text-center peer-checked:border-[#98d2c5] peer-checked:bg-[#98d2c5]/5 transition-all h-full relative">
+                        <div class="absolute top-4 left-4 w-5 h-5 rounded-full border-2 border-gray-300 peer-checked:border-[#98d2c5] flex items-center justify-center">
+                            <div class="w-2.5 h-2.5 rounded-full bg-[#98d2c5] scale-0 peer-checked:scale-100 transition-transform"></div>
+                        </div>
+                        <img src="https://image.pollinations.ai/prompt/Minimalist%20pink%20clay%20mask%20jar%20cosmetic%20white%20mint%20green%20orange%20details?width=300&height=300&nologo=true&seed=10" class="w-32 h-32 object-cover mix-blend-multiply mb-4 mt-2">
+                        <h4 class="font-serif text-lg text-[#222222] mb-2">Masque Argile Rose</h4>
+                        <p class="text-xs text-gray-500">Purifie en douceur et ravive l'éclat (Valeur 28€)</p>
+                    </div>
+                </label>
+
+                <!-- Option 2 -->
+                <label class="cursor-pointer group">
+                    <input type="radio" name="gift" class="peer sr-only" value="oil" onchange="enableOrderBtn()">
+                    <div class="border-2 border-gray-100 rounded-xl p-6 flex flex-col items-center text-center peer-checked:border-[#98d2c5] peer-checked:bg-[#98d2c5]/5 transition-all h-full relative">
+                        <div class="absolute top-4 left-4 w-5 h-5 rounded-full border-2 border-gray-300 peer-checked:border-[#98d2c5] flex items-center justify-center">
+                            <div class="w-2.5 h-2.5 rounded-full bg-[#98d2c5] scale-0 peer-checked:scale-100 transition-transform"></div>
+                        </div>
+                        <img src="https://image.pollinations.ai/prompt/Minimalist%20yellow%20oil%20glass%20dropper%20bottle%20cosmetic%20mint%20green%20orange%20details?width=300&height=300&nologo=true&seed=11" class="w-32 h-32 object-cover mix-blend-multiply mb-4 mt-2">
+                        <h4 class="font-serif text-lg text-[#222222] mb-2">Huile de Nuit Régénérante</h4>
+                        <p class="text-xs text-gray-500">Nourrit en profondeur pendant le sommeil (Valeur 34€)</p>
+                    </div>
+                </label>
+
+                <!-- Option 3 -->
+                <label class="cursor-pointer group">
+                    <input type="radio" name="gift" class="peer sr-only" value="guasha" onchange="enableOrderBtn()">
+                    <div class="border-2 border-gray-100 rounded-xl p-6 flex flex-col items-center text-center peer-checked:border-[#98d2c5] peer-checked:bg-[#98d2c5]/5 transition-all h-full relative">
+                        <div class="absolute top-4 left-4 w-5 h-5 rounded-full border-2 border-gray-300 peer-checked:border-[#98d2c5] flex items-center justify-center">
+                            <div class="w-2.5 h-2.5 rounded-full bg-[#98d2c5] scale-0 peer-checked:scale-100 transition-transform"></div>
+                        </div>
+                        <img src="https://image.pollinations.ai/prompt/Minimalist%20pink%20rose%20quartz%20gua%20sha%20tool%20white%20background%20mint%20green%20orange%20details?width=300&height=300&nologo=true&seed=12" class="w-32 h-32 object-cover mix-blend-multiply mb-4 mt-2">
+                        <h4 class="font-serif text-lg text-[#222222] mb-2">Gua Sha Quartz Rose</h4>
+                        <p class="text-xs text-gray-500">Stimule la circulation et lifte les traits (Valeur 25€)</p>
+                    </div>
+                </label>
+            </div>
+
+            <div class="flex justify-between items-center border-t border-gray-100 pt-8 flex-col sm:flex-row gap-4">
+                <div class="text-center sm:text-left">
+                    <span class="block text-xl font-sans text-[#222222] font-semibold">Total : 89,99 €</span>
+                    <span class="text-xs text-[#DC965A]">Livraison gratuite incluse</span>
+                </div>
+                <button id="btn-validate-order" disabled onclick="submitOrder()" class="mint-bg mint-hover disabled:bg-gray-200 disabled:text-gray-400 disabled:cursor-not-allowed text-[#222222] font-semibold text-sm tracking-widest uppercase py-4 px-10 rounded-lg transition-colors duration-200 shadow-sm w-full sm:w-auto">
+                    Valider ma box
+                </button>
+            </div>
+        </div>
+
+        <div id="quiz-step-confirmation" class="hidden w-full max-w-2xl bg-white p-12 md:p-16 rounded-2xl shadow-sm border border-gray-100 text-center fade-in flex-col items-center">
+            <div class="w-20 h-20 bg-[#98d2c5] rounded-full flex items-center justify-center mb-8 shadow-sm">
+                <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+            </div>
+            
+            <h2 class="font-serif text-3xl md:text-4xl text-[#222222] mb-4">Merci pour votre commande !</h2>
+            <p class="text-gray-500 font-sans mb-10 leading-relaxed">
+                Votre routine sur-mesure est en cours de préparation. Vous allez recevoir un e-mail de confirmation avec votre numéro de suivi d'ici quelques minutes.
+            </p>
+
+            <div class="bg-[#f8f9fa] rounded-xl p-8 mb-10 border border-gray-100 w-full relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-24 h-24 bg-[#DC965A]/10 rounded-bl-full -mr-4 -mt-4"></div>
+                <h3 class="font-serif text-2xl text-[#222222] mb-3 relative z-10">Rejoignez le CleanSkin Club</h3>
+                <p class="text-sm text-gray-600 mb-6 relative z-10">
+                    N'hésitez pas à partager l'ouverture de votre box en story en nous taguant <strong>@CleanSkinLab</strong>. Nous repartageons nos plus beaux unboxings ! 🎁
+                </p>
+                <div class="flex justify-center space-x-4 relative z-10">
+                    <a href="#" class="flex items-center space-x-2 bg-white border border-gray-200 px-4 py-2.5 rounded-full text-xs font-semibold hover:border-[#DC965A] transition-colors text-[#222222]">
+                        <svg class="w-4 h-4" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm3.98-10.181a1.44 1.44 0 11-2.88 0 1.44 1.44 0 012.88 0z"/></svg>
+                        <span>Instagram</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-2 bg-white border border-gray-200 px-4 py-2.5 rounded-full text-xs font-semibold hover:border-[#DC965A] transition-colors text-[#222222]">
+                        <svg class="w-4 h-4" viewBox="0 0 448 512"><path fill="currentColor" d="M448,209.91a210.06,210.06,0,0,1-122.77-39.25V349.38A162.55,162.55,0,1,1,185,188.31V278.2a74.62,74.62,0,1,0,52.23,71.18V0l88,0a121.18,121.18,0,0,0,1.86,22.17h0A122.18,122.18,0,0,0,381,102.39a121.43,121.43,0,0,0,67,20.14Z"/></svg>
+                        <span>TikTok</span>
+                    </a>
+                </div>
+            </div>
+            
+            <button onclick="closeQuiz()" class="w-full border-2 border-[#222222] hover:bg-[#222222] hover:text-white text-[#222222] font-semibold text-sm tracking-widest uppercase py-4 px-10 rounded-lg transition-colors duration-300">
+                Accéder à mon espace
+            </button>
+        </div>
+
+    </div>
+
+    <!-- SCRIPT POUR BASCULER ENTRE LES VUES -->
+    <script>
+        // Données du quiz
+        const quizQuestions = [
+            {
+                question: "Comment ressentez-vous votre peau au réveil ?",
+                options: ["Elle tiraille et manque de confort", "Elle brille, surtout sur la zone T", "Elle est normale, sans gêne particulière"]
+            },
+            {
+                question: "À quelle fréquence avez-vous des rougeurs ou des sensibilités ?",
+                options: ["Très souvent, ma peau réagit vite", "Parfois, selon les saisons ou les traitements", "Rarement, ma peau est tolérante"]
+            },
+            {
+                question: "Quel est votre objectif beauté principal en ce moment ?",
+                options: ["Hydrater et nourrir en profondeur", "Atténuer les imperfections et matifier", "Prévenir les signes de l'âge et unifier le teint"]
+            },
+            {
+                question: "Comment décrivez-vous les pores de votre peau ?",
+                options: ["Invisibles à l'œil nu", "Visibles uniquement sur la zone T", "Visibles sur l'ensemble du visage"]
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+
+        // Ouvrir le quiz
+        function openQuiz() {
+            document.getElementById('landing-content').classList.add('hidden');
+            const quizContainer = document.getElementById('quiz-content');
+            quizContainer.classList.remove('hidden');
+            quizContainer.classList.add('flex');
+            
+            // Réinitialiser les vues
+            document.getElementById('quiz-step-active').classList.remove('hidden');
+            document.getElementById('quiz-step-processing').classList.add('hidden');
+            document.getElementById('quiz-step-gate').classList.add('hidden');
+            document.getElementById('quiz-step-gate').classList.remove('flex');
+            
+            currentQuestionIndex = 0;
+            renderQuestion();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Fermer le quiz
+        function closeQuiz() {
+            document.getElementById('quiz-content').classList.add('hidden');
+            document.getElementById('quiz-content').classList.remove('flex');
+            document.getElementById('landing-content').classList.remove('hidden');
+            
+            // Cacher toutes les étapes additionnelles
+            document.getElementById('quiz-step-gate').classList.add('hidden');
+            document.getElementById('quiz-step-gate').classList.remove('flex');
+            document.getElementById('quiz-step-reveal').classList.add('hidden');
+            document.getElementById('quiz-step-reveal').classList.remove('flex');
+            document.getElementById('quiz-step-gift').classList.add('hidden');
+            document.getElementById('quiz-step-gift').classList.remove('flex');
+            document.getElementById('quiz-step-confirmation').classList.add('hidden');
+            document.getElementById('quiz-step-confirmation').classList.remove('flex');
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Afficher la question courante
+        function renderQuestion() {
+            const questionData = quizQuestions[currentQuestionIndex];
+            
+            // Textes
+            document.getElementById('quiz-counter').textContent = `Question ${currentQuestionIndex + 1} / ${quizQuestions.length}`;
+            document.getElementById('quiz-question-title').textContent = questionData.question;
+            
+            // Barre de progression
+            const progressPercentage = ((currentQuestionIndex) / quizQuestions.length) * 100;
+            document.getElementById('quiz-progress-bar').style.width = `${progressPercentage === 0 ? 10 : progressPercentage}%`;
+
+            // Options
+            const optionsContainer = document.getElementById('quiz-options-container');
+            optionsContainer.innerHTML = ''; 
+
+            questionData.options.forEach(optionText => {
+                const btn = document.createElement('button');
+                btn.className = "w-full border border-gray-200 p-5 rounded-xl hover:border-[#98d2c5] hover:bg-[#98d2c5]/5 transition-all text-[#222222] font-medium text-sm flex items-center group text-left";
+                btn.onclick = () => handleAnswer();
+                btn.innerHTML = `
+                    <span class="w-6 h-6 rounded-full border border-gray-300 mr-4 flex-shrink-0 group-hover:border-[#98d2c5] transition-colors relative">
+                        <span class="absolute inset-1 rounded-full bg-[#98d2c5] opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                    </span>
+                    <span>${optionText}</span>
+                `;
+                optionsContainer.appendChild(btn);
+            });
+        }
+
+        // Gérer le clic sur une réponse
+        function handleAnswer() {
+            if (currentQuestionIndex < quizQuestions.length - 1) {
+                currentQuestionIndex++;
+                renderQuestion();
+            } else {
+                finishQuiz();
+            }
+        }
+
+        // Fin du quiz : Simulation de calcul
+        function finishQuiz() {
+            document.getElementById('quiz-progress-bar').style.width = '100%';
+            
+            setTimeout(() => {
+                document.getElementById('quiz-step-active').classList.add('hidden');
+                document.getElementById('quiz-step-processing').classList.remove('hidden');
+                
+                // Cacher le bouton de découverte et remettre le texte par défaut (si l'utilisateur refait le quiz)
+                document.getElementById('btn-discover-type').classList.add('hidden');
+                document.getElementById('spinner-loader').classList.remove('hidden');
+                document.getElementById('processing-text').textContent = "Notre algorithme identifie les actifs parfaits pour vous.";
+
+                // Simuler 2.5s d'analyse
+                setTimeout(() => {
+                    document.getElementById('spinner-loader').classList.add('hidden');
+                    document.getElementById('processing-text').textContent = "L'analyse est terminée !";
+                    document.getElementById('btn-discover-type').classList.remove('hidden');
+                }, 2500);
+
+            }, 400); // Petit délai pour voir la barre de progression se remplir
+        }
+
+        // Afficher le blocage d'inscription (Gate)
+        function showGate() {
+            document.getElementById('quiz-step-processing').classList.add('hidden');
+            document.getElementById('quiz-step-gate').classList.remove('hidden');
+            document.getElementById('quiz-step-gate').classList.add('flex');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Gérer la soumission du formulaire d'inscription
+        function handleRegistration(event) {
+            event.preventDefault();
+            
+            // Cacher le formulaire de "gate"
+            document.getElementById('quiz-step-gate').classList.add('hidden');
+            document.getElementById('quiz-step-gate').classList.remove('flex');
+            
+            // Afficher la Révélation de la Box
+            const revealStep = document.getElementById('quiz-step-reveal');
+            revealStep.classList.remove('hidden');
+            revealStep.classList.add('flex');
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function showGiftSelection() {
+            document.getElementById('quiz-step-reveal').classList.add('hidden');
+            document.getElementById('quiz-step-reveal').classList.remove('flex');
+            
+            const giftStep = document.getElementById('quiz-step-gift');
+            giftStep.classList.remove('hidden');
+            giftStep.classList.add('flex');
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Activer le bouton de commande si un cadeau est choisi
+        function enableOrderBtn() {
+            const btn = document.getElementById('btn-validate-order');
+            btn.disabled = false;
+        }
+
+        // Soumettre la commande finale
+        function submitOrder() {
+            document.getElementById('quiz-step-gift').classList.add('hidden');
+            document.getElementById('quiz-step-gift').classList.remove('flex');
+            
+            const confStep = document.getElementById('quiz-step-confirmation');
+            confStep.classList.remove('hidden');
+            confStep.classList.add('flex');
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
